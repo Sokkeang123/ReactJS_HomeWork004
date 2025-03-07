@@ -5,12 +5,14 @@ export default function CardComponent({ project }) {
   let progressColor = "bg-pink-200"; // Default color for upcoming projects
 
   if (project.progress === "100") {
-    progressColor = "bg-blue-300"; // Completed projects
+    progressColor = "bg-cyan-400"; // Completed projects
   } else if (project.progress >= "50") {
     progressColor = "bg-yellow-200"; // In progress projects
   } else if (project.progress <= "25") {
     progressColor = "bg-yellow-500"; // Upcoming projects
   }
+  // const filterData = projects.filter((data) => data.projectName.toLowerCase().includes(search.toLowerCase()))
+
 
   return (
     <div className="max-w-sm p-6 bg-white rounded-2xl shadow-sm dark:bg-gray-800 dark:border-gray-700">

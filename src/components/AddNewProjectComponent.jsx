@@ -3,14 +3,12 @@ import React, { useState } from "react";
 
 export default function AddNewProjectComponent({ onCreateProject }) {
   // State for the form inputs
-  
   const [dueDate, setDueDate] = useState("");
   const [progress, setProgress] = useState("");
   const [description, setDescription] = useState("");
 const [projectName, setProjectName] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-
     const newProject = {
       id: new Date().getTime(),
       projectName,

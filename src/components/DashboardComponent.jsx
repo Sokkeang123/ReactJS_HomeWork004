@@ -3,14 +3,14 @@ import { dashboard } from "../data/dashboard";
 import AddNewProjectComponent from "./AddNewProjectComponent";
 import AssignmentsComponent from "./AssignmentsComponent";
 
-export default function DashboardComponent() {
+export default function DashboardComponent({ searchTerm }) {
   const [projects, setProjects] = useState([]);
-
-  // Function to handle adding a new project
   const handleCreateProject = (newProject) => {
     setProjects((prevProjects) => [...prevProjects, newProject]);
   };
-
+  const filteredProjects = projects.filter((project) =>
+    project.projectName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
   return (
     <div>
       <h2 className="text-xl font-semibold mb-5">Dashboard</h2>
@@ -27,14 +27,13 @@ export default function DashboardComponent() {
           </div>
         ))}
       </div>
-
       <div className="mt-8 flex justify-between items-center">
         <h2 className="text-xl font-semibold mb-5">Assignments</h2>
         <AddNewProjectComponent onCreateProject={handleCreateProject} />
       </div>
 
       <div className="mt-10">
-        <AssignmentsComponent projects={projects} />
+        <AssignmentsComponent projects={filteredProjects} search={searchTerm} />
       </div>
     </div>
   );
